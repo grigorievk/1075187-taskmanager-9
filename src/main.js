@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
   const menuTpl = `<section class="control__btn-wrap">
           <input
@@ -395,8 +397,7 @@
           </article>`;
   const loadMoreBtnTpl = `<button class="load-more" type="button">load more</button>`;
 
-  function renderComponent(selector, templateArray) {
-    let i = 1;
+  function renderComponent (selector, templateArray) {
     const templateList = templateArray.map((t) => {
       if (t.hasOwnProperty('quant') && t.quant > 1) {
         t.template = t.template.repeat(t.quant);
