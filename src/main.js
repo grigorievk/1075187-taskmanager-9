@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   const menuTpl = `<section class="control__btn-wrap">
           <input
             type="radio"
@@ -397,23 +397,23 @@
           </article>`;
   const loadMoreBtnTpl = `<button class="load-more" type="button">load more</button>`;
 
-  function renderComponent (selector, templateArray) {
+  function renderComponent(selector, templateArray) {
     const templateList = templateArray.map((t) => {
-      if (t.hasOwnProperty('quant') && t.quant > 1) {
+      if (t.hasOwnProperty(`quant`) && t.quant > 1) {
         t.template = t.template.repeat(t.quant);
       }
       return t.template;
-    }).join('');
+    }).join(`\n`);
 
     [...document.querySelectorAll(selector)].forEach((element) => {
-      element.insertAdjacentHTML('beforeend', templateList);
+      element.insertAdjacentHTML(`beforeend`, templateList);
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    renderComponent('.main__control', [{template: menuTpl}]);
-    renderComponent('.main', [{template: searchTpl}, {template: filterListTpl}, {template: contentTpl}]);
-    renderComponent('.board__tasks', [{template: addCardFormTpl}, {template: cardTpl, quant: 3}]);
-    renderComponent('.board', [{template: loadMoreBtnTpl}]);
+  document.addEventListener(`DOMContentLoaded`, () => {
+    renderComponent(`.main__control`, [{template: menuTpl}]);
+    renderComponent(`.main`, [{template: searchTpl}, {template: filterListTpl}, {template: contentTpl}]);
+    renderComponent(`.board__tasks`, [{template: addCardFormTpl}, {template: cardTpl, quant: 3}]);
+    renderComponent(`.board`, [{template: loadMoreBtnTpl}]);
   });
 })();
