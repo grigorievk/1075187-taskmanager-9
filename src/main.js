@@ -2,7 +2,7 @@ import {createSiteMenuTemplate} from "./components/site-menu.js";
 import {createSearchTemplate} from "./components/search.js";
 import {createFilterTemplate} from "./components/filter.js";
 
-import {createContentTemplate} from "./components/content.js"
+import {createContentTemplate} from "./components/content.js";
 import {createTaskEditTemplate} from "./components/task-edit.js";
 import {createTaskTemplate} from "./components/task.js";
 import {createButtonLoadMoreTemplate} from "./components/button-load-more.js";
