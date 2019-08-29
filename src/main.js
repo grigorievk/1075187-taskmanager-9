@@ -20,13 +20,17 @@ function renderComponent(selector, templateArray) {
   });
 }
 
+const generateTagList = (tags) => {
+  return Array.from(tags).filter((t, i) => i === Math.floor(Math.random() * 3))
+};
+
 const prepareTaskTemplate = (template, data, quant) => {
   return new Array(quant)
     .fill(``)
     .map(() => {
       const result = data();
+      result.tagList = generateTagList(result.tags);
       taskData.push(result);
-      console.log(result);
       return result;
     })
     .map(template)
@@ -35,8 +39,7 @@ const prepareTaskTemplate = (template, data, quant) => {
 const getTaskTemplate = prepareTaskTemplate(createTaskTemplate, getTaskData, 3);
 
 const prepareFilterData = () => {
-  console.log(taskData);
-  const filterData = getFilterData([...taskData]);
+  const filterData = getFilterData(taskData);
   return createFilterTemplate(filterData);
 };
 
@@ -47,7 +50,5 @@ document.addEventListener(`DOMContentLoaded`, () => {
     {template: createTaskEditTemplate()},
     {template: getTaskTemplate}
   ]);
-
-  console.log(taskData);
   renderComponent(`.board`, [{template: createButtonLoadMoreTemplate()}]);
 });

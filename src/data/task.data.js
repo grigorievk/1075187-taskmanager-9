@@ -21,9 +21,6 @@ export const getTaskData = () => ({
     `intensive`,
     `keks`,
   ]),
-  get tagList() {
-    return Array.from(this.tags).filter((t, i) => i === Math.floor(Math.random() * 3))
-  },
   color: [
     `black`,
     `yellow`,

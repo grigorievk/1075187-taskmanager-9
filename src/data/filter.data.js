@@ -21,10 +21,7 @@ export const getFilterData = (taskData) => ([
   },
   {
     title: `Tags`,
-    count: taskData.filter((i) => {
-      console.log(i.tagList, i.tagList.length > 0);
-      return Boolean(i.tagList.length > 0)
-    }).length
+    count: taskData.filter((i) => Boolean(i.tagList.length)).length
   },
   {
     title: `Archive`,
