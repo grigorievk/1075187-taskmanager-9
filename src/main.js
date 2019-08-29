@@ -26,6 +26,7 @@ const prepareTaskTemplate = (template, data, quant) => {
     .map(() => {
       const result = data();
       taskData.push(result);
+      console.log(result);
       return result;
     })
     .map(template)
@@ -35,7 +36,7 @@ const getTaskTemplate = prepareTaskTemplate(createTaskTemplate, getTaskData, 3);
 
 const prepareFilterData = () => {
   console.log(taskData);
-  const filterData = getFilterData(taskData);
+  const filterData = getFilterData([...taskData]);
   return createFilterTemplate(filterData);
 };
 
