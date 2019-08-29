@@ -31,3 +31,18 @@ export const getTaskData = () => ({
   isFavorite: Boolean(Math.round(Math.random())),
   isArchive: Boolean(Math.round(Math.random()))
 });
+
+/* Temporary structure for tag list while is Math.Random used */
+export const generateTagList = (tags) => {
+  return Array.from(tags).filter((t, i) => i === Math.floor(Math.random() * 3))
+};
+
+export const generateTaskData = (data, quant) => {
+  return new Array(quant)
+    .fill(``)
+    .map(() => {
+      const result = data();
+      result.tagList = generateTagList(result.tags);
+      return result;
+    });
+};
