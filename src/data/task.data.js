@@ -34,7 +34,7 @@ export const getTaskData = () => ({
 
 /* Temporary structure for tag list while is Math.Random used */
 export const generateTagList = (tags) => {
-  return Array.from(tags).filter((t, i) => i === Math.floor(Math.random() * 3))
+  return Array.from(tags).filter((t, i) => i === Math.floor(Math.random() * 3));
 };
 
 export const generateTaskData = (data, quant) => {

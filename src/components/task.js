@@ -1,17 +1,19 @@
-export const createTaskTemplate = ({ description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive }) => {
-  return `<article class="card card--${color} ${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `card--repeat`: ``}">
+export const createTaskTemplate = ({description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive}) => {
+  return `<article class="card card--${color} ${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `card--repeat` : ``}">
             <div class="card__form">
               <div class="card__inner">
                 <div class="card__control">
                   <button type="button" class="card__btn card__btn--edit">
                     edit
                   </button>
-                  <button type="button" class="card__btn card__btn--archive">
+                  <button type="button" class="card__btn card__btn--archive"
+                    ${isArchive ? ` checked` : ``}>
                     archive
                   </button>
                   <button
                     type="button"
                     class="card__btn card__btn--favorites card__btn--disabled"
+                    ${isFavorite ? ` checked` : ``}
                   >
                     favorites
                   </button>

@@ -46,8 +46,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
   ]);
   renderComponent(`.board`, [{template: createButtonLoadMoreTemplate()}]);
 
-  document.addEventListener('click',function (event) {
-    if(event.target && event.target.classList.contains(`load-more`)){
+  document.addEventListener(`click`, function (event) {
+    if (event.target && event.target.classList.contains(`load-more`)) {
       const dataFrom = currentTaskSlot * TASK_PER_PAGE;
       const dataTo = dataFrom + TASK_PER_PAGE;
       const moreTaskData = taskData.slice(dataFrom, dataTo);

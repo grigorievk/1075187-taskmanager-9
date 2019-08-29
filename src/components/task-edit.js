@@ -1,14 +1,16 @@
-export const createTaskEditTemplate = ({ description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive }) => {
+export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive}) => {
   return `<article class="card card--edit card--${color}">
             <form class="card__form" method="get">
               <div class="card__inner">
                 <div class="card__control">
-                  <button type="button" class="card__btn card__btn--archive">
+                  <button type="button" class="card__btn card__btn--archive"
+                   ${isArchive ? ` checked` : ``}>
                     archive
                   </button>
                   <button
                     type="button"
                     class="card__btn card__btn--favorites card__btn--disabled"
+                    ${isFavorite ? ` checked` : ``}
                   >
                     favorites
                   </button>
@@ -94,7 +96,7 @@ export const createTaskEditTemplate = ({ description, dueDate, repeatingDays, ta
                               class="card__color-input card__color-input--${tagColor} visually-hidden"
                               name="color"
                               value="${tagColor}"
-                              ${tagColor === color ? ' checked' : ''}
+                              ${tagColor === color ? ` checked` : ``}
                             />
                             <label
                               for="color-${tagColor}-1"
