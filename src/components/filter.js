@@ -1,6 +1,11 @@
-export const createFilterTemplate = (filterData) => {
-  return `<section class="main__filter filter container">
-        ${Array.from(filterData).map((filter) => `
+export class Filter {
+  constructor({filterData}) {
+    this._filterData = filterData;
+  }
+
+  getTemplate() {
+    return `<section class="main__filter filter container">
+        ${Array.from(this._filterData).map((filter) => `
           <input
             type="radio"
             id="filter__${filter.title.toLowerCase()}"
@@ -12,4 +17,5 @@ export const createFilterTemplate = (filterData) => {
           ${filter.title} <span class="filter__${filter.title.toLowerCase()}-count">${filter.count}</span></label
         >`).join(``)}
       </section>`;
-};
+  }
+}

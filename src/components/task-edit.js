@@ -1,16 +1,27 @@
-export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive}) => {
-  return `<article class="card card--edit card--${color}">
+export class Content {
+  constructor({description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive}) {
+    this._description = description;
+    this._dueDate = dueDate;
+    this._repeatingDays = repeatingDays;
+    this._tagList = tagList;
+    this._color = color;
+    this._isFavorite = isFavorite;
+    this._isArchive = isArchive;
+  }
+
+  getTemplate() {
+    return `<article class="card card--edit card--${this._color}">
             <form class="card__form" method="get">
               <div class="card__inner">
                 <div class="card__control">
                   <button type="button" class="card__btn card__btn--archive"
-                   ${isArchive ? ` checked` : ``}>
+                   ${this._isArchive ? ` checked` : ``}>
                     archive
                   </button>
                   <button
                     type="button"
                     class="card__btn card__btn--favorites card__btn--disabled"
-                    ${isFavorite ? ` checked` : ``}
+                    ${this._isFavorite ? ` checked` : ``}
                   >
                     favorites
                   </button>
@@ -28,7 +39,7 @@ export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tag
                       class="card__text"
                       placeholder="Start typing your text here..."
                       name="text"
-                    >${description}</textarea>
+                    >${this._description}</textarea>
                   </label>
                 </div>
 
@@ -46,7 +57,7 @@ export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tag
                             type="text"
                             placeholder="23 September"
                             name="date"
-                            value="${new Date(dueDate).toDateString()}"
+                            value="${new Date(this._dueDate).toDateString()}"
                           />
                         </label>
                       </fieldset>
@@ -57,7 +68,7 @@ export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tag
 
                       <fieldset class="card__repeat-days" disabled>
                         <div class="card__repeat-days-inner">
-                        ${Array.from(repeatingDays).map((day) => `
+                        ${Array.from(this._repeatingDays).map((day) => `
                             <input
                               class="visually-hidden card__repeat-day-input"
                               type="checkbox"
@@ -74,7 +85,7 @@ export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tag
 
                     <div class="card__hashtag">
                       <div class="card__hashtag-list"></div>
-                       ${Array.from(tagList).map((tag) => `<label>
+                       ${Array.from(this._tagList).map((tag) => `<label>
                         <input
                           type="text"
                           class="card__hashtag-input"
@@ -89,21 +100,21 @@ export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tag
                     <h3 class="card__colors-title">Color</h3>
                     <div class="card__colors-wrap">
                       ${Array.from([`black`, `yellow`, `blue`, `green`, `pink`])
-                        .map((tagColor) => ` 
+      .map((tagColor) => ` 
                             <input
                               type="radio"
                               id="color-${tagColor}-1"
                               class="card__color-input card__color-input--${tagColor} visually-hidden"
                               name="color"
                               value="${tagColor}"
-                              ${tagColor === color ? ` checked` : ``}
+                              ${tagColor === this._color ? ` checked` : ``}
                             />
                             <label
                               for="color-${tagColor}-1"
                               class="card__color card__color--${tagColor}"
                               >${tagColor}</label
                             >`)
-                        .join(``)}
+      .join(``)}
                     </div>
                   </div>
                 </div>
@@ -115,4 +126,5 @@ export const createTaskEditTemplate = ({description, dueDate, repeatingDays, tag
               </div>
             </form>
           </article>`;
-};
+  }
+}
