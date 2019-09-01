@@ -1,5 +1,9 @@
-export const createSearchTemplate = () => {
-  return `<section class="main__search search container">
+export class Search {
+  constructor() {
+  }
+
+  getTemplate() {
+    return `<section class="main__search search container">
         <input
           type="text"
           id="search__input"
@@ -8,4 +12,5 @@ export const createSearchTemplate = () => {
         />
         <label class="visually-hidden" for="search__input">Search</label>
       </section>`;
-};
+  }
+}
