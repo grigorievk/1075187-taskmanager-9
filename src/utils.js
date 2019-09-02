@@ -10,13 +10,19 @@ export const createElement = (template) => {
 };
 
 export const render = (container, element, place) => {
+  const containerElement = (typeof container === `string`) ? document.querySelector(container) : container;
+
+  if (!containerElement) {
+    return;
+  }
+
   switch (place) {
     case Position.AFTERBEGIN:
-      container.prepend(element);
+      containerElement.prepend(element);
       break;
     case Position.BEFOREEND:
     default:
-      container.append(element);
+      containerElement.append(element);
       break;
   }
 };

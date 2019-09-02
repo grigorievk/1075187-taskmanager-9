@@ -1,4 +1,6 @@
-export class Content {
+import {createElement} from "../utils";
+
+export class TaskEdit {
   constructor({description, dueDate, repeatingDays, tagList, color, isFavorite, isArchive}) {
     this._description = description;
     this._dueDate = dueDate;
@@ -7,6 +9,14 @@ export class Content {
     this._color = color;
     this._isFavorite = isFavorite;
     this._isArchive = isArchive;
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
   }
 
   getTemplate() {

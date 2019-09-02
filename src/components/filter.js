@@ -1,6 +1,16 @@
+import {createElement} from "../utils";
+
 export class Filter {
-  constructor({filterData}) {
+  constructor(filterData) {
     this._filterData = filterData;
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
   }
 
   getTemplate() {
