@@ -1,11 +1,13 @@
-import {createSiteMenuTemplate} from "./components/site-menu.js";
-import {createSearchTemplate} from "./components/search.js";
-import {createFilterTemplate} from "./components/filter.js";
+import {createElement, render, unrender} from "./utils"
 
-import {createContentTemplate} from "./components/content.js";
-import {createTaskEditTemplate} from "./components/task-edit.js";
-import {createTaskTemplate} from "./components/task.js";
-import {createButtonLoadMoreTemplate} from "./components/button-load-more.js";
+import {SiteMenu} from "./components/site-menu.js";
+import {Search} from "./components/search.js";
+import {Filter} from "./components/filter.js";
+
+import {Content} from "./components/content.js";
+import {Content} from "./components/task-edit.js";
+import {Task} from "./components/task.js";
+import {ButtonLoadMore} from "./components/button-load-more.js";
 
 import {getFilterData} from "./data/filter.data";
 import {getTaskData, generateTaskData} from "./data/task.data";
