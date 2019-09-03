@@ -7,6 +7,7 @@ import {Filter} from "./components/filter.js";
 import {Content} from "./components/content.js";
 import {TaskEdit} from "./components/task-edit.js";
 import {Task} from "./components/task.js";
+import {TaskEmpty} from "./components/task-empty.js";
 import {ButtonLoadMore} from "./components/button-load-more.js";
 
 import {getFilterData} from "./data/filter.data";
@@ -22,11 +23,12 @@ const prepareFilterData = () => {
 };
 
 const siteMenu = new SiteMenu();
+const content = (taskData.length) ? new Content() : new TaskEmpty();
 
 document.addEventListener(`DOMContentLoaded`, () => {
   render(`.main__control`, siteMenu.getElement());
 
-  [new Search(), prepareFilterData(), new Content()].forEach((t) => render(`.main`, t.getElement())); // search, filter, content
+  [new Search(), prepareFilterData(), content].forEach((t) => render(`.main`, t.getElement())); // search, filter, content
 
   const tasksContainer = document.querySelector(`.board__tasks`);
   const renderTask = (itemData) => {
@@ -67,8 +69,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
     render(tasksContainer, task.getElement());
   };
 
-  [...taskData].slice(0, TASK_PER_PAGE).forEach((itemData) => renderTask(itemData));
-
   const renderButton = () => {
     const buttonLoadMore = new ButtonLoadMore();
 
@@ -89,5 +89,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
       });
   };
 
-  renderButton();
+  if (taskData.length) {
+    [...taskData].slice(0, TASK_PER_PAGE).forEach((itemData) => renderTask(itemData));
+
+    renderButton();
+  }
 });
