@@ -9,7 +9,6 @@ export class Task {
     this._color = color;
     this._isFavorite = isFavorite;
     this._isArchive = isArchive;
-    // Object.keys([...args]).forEach((i) => this[`_` + i] = i);
   }
 
   getElement() {
